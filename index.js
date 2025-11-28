@@ -14,6 +14,12 @@ app.use(express.json());
 // Routes
 app.use("/api/timetables", routerTimetable);
 app.use("/users",userRouter);
+app("/last",(req,res)=>{
+  res.json({
+    success:true,
+    data:Rudra verma api working
+  })
+})
 
 // Connect to MongoDB
 mongoose
