@@ -17,7 +17,7 @@ app.use("/users",userRouter);
 app.get("/last",(req,res)=>{
   res.json({
     success:true,
-    data:"Rudra verma api working"
+    data:"Rudra verma api working1"
   })
 })
 
