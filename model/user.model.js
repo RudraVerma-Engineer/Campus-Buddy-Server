@@ -7,6 +7,7 @@ import departmentEnum from "../storeComponents/departmentEnum.js";
 
 const Course = courseEnum;
 const Departments = departmentEnum;
+const RoleEnum=["Student", "Admin", "Faculty", "SuperAdmin"];
 
 const userSchema = new mongoose.Schema(
   {
@@ -52,38 +53,38 @@ const userSchema = new mongoose.Schema(
       unique: true,
       trim: true,
     },
-    course: {
-      type: String,
-      enum: Course,
-      required: true,
-    },
-    department: {
-      type: String,
-      enum: Departments,
-      required: true,
-    },
-    semester: {
-      type: Number,
-      required: true,
-      min: 1,
-      max: 8,
-    },
-    isVerified: {
-      type: Boolean,
-      default: false,
-    },
-    otp: {
-      type: String,
-      default: null,
-    },
-    otpExpiresAt: {
-      type: Date,
-      default: null,
-    },
+    // course: {
+    //   type: String,
+    //   enum: Course,
+    //   required: true,
+    // },
+    // department: {
+    //   type: String,
+    //   enum: Departments,
+    //   required: true,
+    // },
+    // semester: {
+    //   type: Number,
+    //   required: true,
+    //   min: 1,
+    //   max: 8,
+    // },
+    // isVerified: {
+    //   type: Boolean,
+    //   default: false,
+    // },
+    // otp: {
+    //   type: String,
+    //   default: null,
+    // },
+    // otpExpiresAt: {
+    //   type: Date,
+    //   default: null,
+    // },
     role: {
       type: String,
-      enum: ["student", "admin", "faculty", "superAdmin"],
-      default: "student",
+      enum: RoleEnum ,
+      default: "Student",
     },
   },
   {
@@ -116,6 +117,7 @@ export const userSigninValidationSchema = Joi.object({
     .pattern(/^\d{10}$/)
     .optional(),
   password: Joi.string().min(8).required(),
+  role:Joi.string().valid(...RoleEnum).required()
   // rollNumber:Joi.string().required(),
   // course:Joi.string().valid(...Course).required(),
   // department:Joi.string().valid(...Departments).required(),
