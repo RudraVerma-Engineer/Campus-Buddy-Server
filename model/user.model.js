@@ -116,10 +116,10 @@ export const userSigninValidationSchema = Joi.object({
     .pattern(/^\d{10}$/)
     .optional(),
   password: Joi.string().min(8).required(),
-  rollNumber:Joi.string().required(),
-  course:Joi.string().valid(...Course).required(),
-  department:Joi.string().valid(...Departments).required(),
-  semester:Joi.number().min(1).max(8).required(),
+  // rollNumber:Joi.string().required(),
+  // course:Joi.string().valid(...Course).required(),
+  // department:Joi.string().valid(...Departments).required(),
+  // semester:Joi.number().min(1).max(8).required(),
 });
 
 export const userLoginValidationSchema = Joi.object({
