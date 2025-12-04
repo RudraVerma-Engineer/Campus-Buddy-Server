@@ -47,12 +47,12 @@ const userSchema = new mongoose.Schema(
       minlength: 8,
       required: true,
     },
-    rollNumber: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
-    },
+    // rollNumber: {
+    //   type: String,
+    //   required: true,
+    //   unique: true,
+    //   trim: true,
+    // },
     // course: {
     //   type: String,
     //   enum: Course,
@@ -92,7 +92,7 @@ const userSchema = new mongoose.Schema(
   }
 );
 userSchema.methods.generateAuthToken = function () {
-  const token = jwt.sign({ id: this._id, role:this.role }, process.env.JWT_SECRET, {
+  const token = jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
     expiresIn: "24h",
   });
   return token;

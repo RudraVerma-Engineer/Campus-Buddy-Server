@@ -19,8 +19,10 @@ export async function userSignUp(req, res) {
       email: email,
       password: hashedPassword,
     });
-    if(!user) throw new AppError(400,"Bad Request Need Assistance in creating student");
+    console.log("User:",user);
+    if(!user) throw new AppError(400,"Bad Request, Developer Need check in creating student");
     const token = user.generateAuthToken();
+    console.log(token);
     return res.status(201).json({
       success: true,
       user,
